@@ -1,3 +1,4 @@
+
 trigger:
   branches:
     include:
@@ -17,7 +18,18 @@ pool:
 variables:
   MAVEN_OPTS: "-Xmx1024m"
 
+
+
+
 steps:
+- script: |
+    echo "Setting up Java 11..."
+    sudo apt-get update
+    sudo apt-get install -y openjdk-11-jdk
+    java -version
+  displayName: "Install Java 11"
+
+
 - task: UseJava@1
   inputs:
     version: '11'
